@@ -1,9 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+let persistedState = JSON.parse(localStorage.getItem('reduxState'));
+const { email, links, userProfile } = persistedState.user
+
 const initialState = {
-  links: [],
-  email: '',
-  userProfile: {}
+  links: links || [],
+  email: email || '',
+  userProfile: userProfile || {}
 }
 
 export const userSlice = createSlice({
@@ -12,15 +15,12 @@ export const userSlice = createSlice({
   reducers: {
     saveLinks: (state, action) => {
       state.links = (action.payload);
-      console.log(state.links)
     },
     saveEmail: (state, action) => {
       state.email = (action.payload);
-      console.log(state.email, 'my need')
     },
     saveProfile: (state, action) => {
       state.userProfile = (action.payload);
-      console.log(state.userProfile)
     },
   },
 })

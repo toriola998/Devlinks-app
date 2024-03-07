@@ -3,7 +3,7 @@ import AuthLayout from "../components/layout/AuthLayout";
 import auth from "../api/auth";
 
 import { useDispatch } from "react-redux";
-import { saveEmail, saveProfile } from "../redux/userSlice.js";
+import { saveEmail, saveProfile, saveLinks } from "../redux/userSlice.js";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -42,7 +42,7 @@ export default function Login() {
             navigate("/customize-links", { replace: true });
          }
 
-         const { firstName, lastName, photo, profileEmail, colorTheme } = data;
+         const { firstName, lastName, photo, profileEmail, colorTheme, links } = data;
          dispatch(saveEmail(payload?.email));
          // localStorage.setItem("email", JSON.stringify(payload?.email));
          console.log(data, 'userData')
@@ -55,6 +55,7 @@ export default function Login() {
                colorTheme,
             })
          );
+         dispatch(saveLinks(links))
       } catch (err) {
          const errorMsg = err?.response?.data?.msg;
          if (errorMsg) {

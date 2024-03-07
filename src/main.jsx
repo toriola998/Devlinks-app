@@ -10,7 +10,7 @@ import {
    // UserPage,
 } from "./routes/index";
 import "./api";
-import { store } from "./redux/store";
+import store from "./redux/store";
 import { Provider } from "react-redux";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
