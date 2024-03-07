@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 function PhonePreview() {
    const userData = useSelector((state) => state.user.userProfile);
-   // const linkList = useSelector((state) => state.linksList.value);
+   const linkList = useSelector((state) => state.user.links);
 
    return (
       <div className="hidden rounded-lg bg-white p-4 md:p-10 lg:w-[40%] lg:flex justify-center">
@@ -49,7 +49,7 @@ function PhonePreview() {
                                  className="bg-grey-2 h-[44px] w-[237px] rounded-lg"
                               />
                            ))} */}
-                           {/* <LinkList linkList={linkList} /> */}
+                           <LinkList linkList={linkList} />
                         </div>
                      </div>
                   </div>
