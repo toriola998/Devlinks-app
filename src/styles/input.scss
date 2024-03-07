@@ -28,7 +28,7 @@
 }
 
 #dropdown-list {
-    @apply bg-white rounded-lg px-4 mt-3 h-[200px] overflow-y-scroll absolute right-0 left-0 z-40;
+    @apply bg-white rounded-lg  mt-3 h-[200px] overflow-y-scroll absolute right-0 left-0 z-40;
 
     li {
         @apply py-3;

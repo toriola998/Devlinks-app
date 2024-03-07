@@ -5,7 +5,6 @@ function SelectDropdown({
    selectedPlatform,
    setSelectedPlatform,
    setValue,
-   watch,
    index,
 }) {
    const [dropdown, setDropdown] = useState(false);
@@ -30,10 +29,12 @@ function SelectDropdown({
          >
             <span className="flex-item gap-x-[14px]">
                <img
-                  src={`/images/icons/platforms/${selectedPlatform? selectedPlatform?.icon : "github.svg"}`}
+                  src={`/images/icons/platforms/${
+                     selectedPlatform ? selectedPlatform?.icon : "github.svg"
+                  }`}
                   alt=""
                />
-               { selectedPlatform ? selectedPlatform?.name : "Github" }
+               {selectedPlatform ? selectedPlatform?.name : "Github"}
             </span>
             <img
                src="/images/icons/dropdown.svg"
@@ -47,6 +48,7 @@ function SelectDropdown({
                role="listbox"
                aria-labelledby="dropdown-button"
                id="dropdown-list"
+               className="modal-scroll"
             >
                {platforms.map((option, i) => (
                   <li
@@ -56,11 +58,7 @@ function SelectDropdown({
                         setDropdown(false);
                         setValue(`items[${index}].platform`, option);
                      }}
-                     // className={
-                     //    watch(`items[${index}].platform`) === option.name
-                     //       ? "selected"
-                     //       : ""
-                     // }
+                     className="cursor-pointer hover:bg-gray-100 px-4"
                   >
                      <span className="flex-item gap-x-[14px]">
                         <img

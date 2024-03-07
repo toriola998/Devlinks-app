@@ -55,6 +55,7 @@ export default function CustomizeLinks() {
          const response = await user.updateUser(payload, email);
          console.log(response);
          dispatch(saveLinks(data?.items));
+         toast.success("Links successfully saved!");
       } catch (err) {
          console.log(err);
          const errorMsg = err?.response?.data?.msg;
