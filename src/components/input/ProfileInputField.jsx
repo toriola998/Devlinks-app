@@ -5,6 +5,8 @@ function InputField({
    placeholder,
    errorMessage,
    fieldName,
+   defaultValue,
+   customClass
 }) {
    return (
       <div className="relative md:flex items-center justify-between">
@@ -27,7 +29,8 @@ function InputField({
                   placeholder={placeholder}
                   id={name}
                   {...fieldName}
-                  className="w-full py-3 px-4"
+                  className={`w-full py-3 px-4 ${customClass}`}
+                  defaultValue={defaultValue}
                />
             </div>
             <p className="text-red text-xs absolute top-[9px] right-0 md:top-[unset] md:right-4">

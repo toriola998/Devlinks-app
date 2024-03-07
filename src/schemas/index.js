@@ -34,6 +34,7 @@ const profileDetailsSchema = yup.object().shape({
   email: yup.string().email("Email is invalid").required("Can't be empty"),
   firstName: yup.string().required("Can't be empty"),
   lastName: yup.string().required("Can't be empty"),
+  //colorTheme: ''
 });
 
 const schemas = {

@@ -30,11 +30,11 @@ export default function ProfileDetails() {
 
    const dispatch = useDispatch();
    const email = useSelector((state) => state.user.email);
+   const userData = useSelector((state) => state.user.userProfile);
 
    const [selectedImage, setSelectedImage] = useState("");
    const [loading, setLoading] = useState(false);
    const [imageFile, setImageFile] = useState(null);
-
 
    const handleImageChange = (e) => {
       const file = e.target.files[0];
@@ -49,20 +49,20 @@ export default function ProfileDetails() {
    };
 
    async function onSubmit(data) {
-      console.log(data);
+      console.log(data, 'all data');
       console.log(selectedImage);
       const payload = {
          // photo: "",
          firstName: data.firstName,
          lastName: data.lastName,
          profileEmail: data.email,
-         // profileColorTheme: 
+         // profileColorTheme:
       };
       try {
          setLoading(true);
          const response = await user.updateUser(payload, email);
          console.log(response);
-         dispatch(saveProfile({...payload}));
+         dispatch(saveProfile({ ...payload }));
          toast.success("Profile details successfully saved!");
       } catch (err) {
          console.log(err);
@@ -94,6 +94,7 @@ export default function ProfileDetails() {
                      placeholder="Ben"
                      fieldName={register("firstName")}
                      errorMessage={errors.firstName?.message}
+                     defaultValue={userData.firstName}
                   />
                   <ProfileInputField
                      name="lastName"
@@ -102,6 +103,7 @@ export default function ProfileDetails() {
                      placeholder="Wright"
                      fieldName={register("lastName")}
                      errorMessage={errors.lastName?.message}
+                     defaultValue={userData.lastName}
                   />
                   <ProfileInputField
                      name="email"
@@ -110,6 +112,7 @@ export default function ProfileDetails() {
                      placeholder="e.g. alex@email.com"
                      fieldName={register("email")}
                      errorMessage={errors.email?.message}
+                     defaultValue={userData.profileEmail}
                   />
                </div>
 
