@@ -87,7 +87,7 @@ export default function CustomizeLinks() {
             {fields.length === 0 && <EmptyLinksState />}
             <form onSubmit={handleSubmit(onSubmit)}>
                {fields.length >= 1 && (
-                  <div>
+                  <div className="max-h-[400px] overflow-y-scroll modal-scroll mt-5 pr-5">
                      {fields.map((field, index) => {
                         return (
                            <section
