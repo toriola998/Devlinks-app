@@ -2,6 +2,11 @@ import ProfileLayout from "../components/layout/ProfileLayout";
 import ProfileInputField from "../components/input/ProfileInputField";
 import ProfileImage from "../components/input/ProfileImage";
 import schemas from "../schemas";
+import user from "../api/user";
+
+import { useDispatch, useSelector } from "react-redux";
+import { saveProfile } from "../redux/userSlice.js";
+import { toast } from "react-toastify";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -15,20 +20,25 @@ export default function ProfileDetails() {
       formState: { errors },
    } = useForm({
       resolver: yupResolver(schemas.profileDetailsSchema),
-      defaultValues: formDataFromRedux || {
-         firstName: "",
-         lastName: "",
-         email: "",
-         photo: ""
-      },
+      // defaultValues: formDataFromRedux || {
+      //    firstName: "",
+      //    lastName: "",
+      //    email: "",
+      //    photo: ""
+      // },
    });
 
-  
+   const dispatch = useDispatch();
+   const email = useSelector((state) => state.user.email);
+
+   const [selectedImage, setSelectedImage] = useState("");
    const [loading, setLoading] = useState(false);
    const [imageFile, setImageFile] = useState(null);
 
+
    const handleImageChange = (e) => {
       const file = e.target.files[0];
+      console.log(file);
       if (file) {
          setSelectedImage(URL.createObjectURL(file));
          setImageFile(file);
@@ -38,10 +48,31 @@ export default function ProfileDetails() {
       }
    };
 
-   
-
    async function onSubmit(data) {
-      console.log(data)
+      console.log(data);
+      console.log(selectedImage);
+      const payload = {
+         // photo: "",
+         firstName: data.firstName,
+         lastName: data.lastName,
+         profileEmail: data.email,
+         // profileColorTheme: 
+      };
+      try {
+         setLoading(true);
+         const response = await user.updateUser(payload, email);
+         console.log(response);
+         dispatch(saveProfile({...payload}));
+         toast.success("Profile details successfully saved!");
+      } catch (err) {
+         console.log(err);
+         const errorMsg = err?.response?.data?.msg;
+         if (errorMsg) {
+            toast.error(errorMsg);
+         } else toast.error("Something seems wrong, try again later!");
+      } finally {
+         setLoading(false);
+      }
    }
 
    return (

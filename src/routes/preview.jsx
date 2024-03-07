@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import LinkList from "../components/LinkList";
 import ProfileData from "../components/ProfileData";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 export default function Preview() {
-   function copyLink() {
-      const email = 'email'
-      const username = email.split("@")[0];
+   const email = useSelector((state) => state.user.email);
+   const linkList = useSelector((state) => state.user.links);
 
+   function copyLink() {
+      const username = email.split("@")[0];
       const userUrl =
          window.location.protocol +
          "//" +
@@ -14,12 +19,19 @@ export default function Preview() {
          "/" +
          username;
 
-      navigator.clipboard.writeText(userUrl);
-      // showSuccessToast();
+      navigator.clipboard
+         .writeText(userUrl)
+         .then(() => {
+            toast.success("Profile link copied to clipboard!");
+         })
+         .catch(() => {
+            toast.error("Failed to copy profile link to clipboard.");
+         });
    }
 
    return (
       <>
+       <ToastContainer theme="colored" />
          <div className="bg-[transparent] md:bg-purple h-0 md:h-[357px] rounded-br-[32px] rounded-bl-[32px] md:p-6">
             <nav className="flex-item justify-between p-4 md:bg-white rounded-xl">
                <Link className="outline-btn w-auto" to="/customize-links">
@@ -36,8 +48,7 @@ export default function Preview() {
 
             <div className="flex-item justify-center py-[56px]">
                <div className="flex flex-col gap-y-5">
-                  {/* <LinkList linkList={linkList} /> */}
-                  <LinkList />
+                  <LinkList linkList={linkList} />
                </div>
             </div>
          </main>

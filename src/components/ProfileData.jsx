@@ -2,23 +2,15 @@ import { useSelector } from "react-redux";
 
 function ProfileData({ textStyleClass, profileData }) {
    const userData = useSelector((state) => state.user.userProfile);
-   
+
    let firstName = userData?.firstName;
    let lastName = userData?.lastName;
    let initials = firstName?.charAt(0) + "." + lastName?.charAt(0);
 
-   const getInitials = () => {
-      if (initials) {
-         return;
-      } else {
-         null;
-      }
-   };
-
    return (
       <>
          {!userData?.photo ? (
-            <div className="initials photo">{getInitials()}</div>
+            <div className="initials photo">{initials}</div>
          ) : (
             <img src={profileData?.photo} alt="" className="photo" />
          )}
