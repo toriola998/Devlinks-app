@@ -35,19 +35,17 @@ export default function Login() {
       try {
          setLoading(true);
          const response = await auth.login(payload);
-         console.log(payload?.email, 'email')
          const data = response?.data;
-
          const token = data?.token;
          localStorage.setItem("token", token);
          if (token) {
-            navigate("/customize-links",{ replace: true});
+            navigate("/customize-links", { replace: true });
          }
 
          const { firstName, lastName, photo, profileEmail, colorTheme } = data;
-         // dispatch(saveEmail(payload?.email));
-         localStorage.setItem("email", JSON.stringify(payload?.email));
-         
+         dispatch(saveEmail(payload?.email));
+         // localStorage.setItem("email", JSON.stringify(payload?.email));
+         console.log(data, 'userData')
          dispatch(
             saveProfile({
                firstName,

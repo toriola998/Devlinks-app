@@ -40,28 +40,23 @@ export default function CustomizeLinks() {
       }))
    );
    const [loading, setLoading] = useState(false);
-   const [userId, setUserId] = useState(JSON.parse(localStorage.getItem('email')))
+   // const [userId, setUserId] = useState(
+   //    JSON.parse(localStorage.getItem("email"))
+   // );
    const dispatch = useDispatch();
    const email = useSelector((state) => state.user.email);
-   console.log(email)
 
    async function onSubmit(data) {
-      console.log(data.items, email);
       const payload = {
          links: data.items,
-         // firstName: 'laide'
-      }
-      console.log(payload, 'payload')
-      console.log(userId, 'id-email')
+      };
       try {
          setLoading(true);
-         const response = await user.updateUser(payload, userId);
-         
-         
-         console.log(data.items, email, response);
-        // dispatch(saveLinks(data?.items));
+         const response = await user.updateUser(payload, email);
+         console.log(response);
+         dispatch(saveLinks(data?.items));
       } catch (err) {
-         console.log(err)
+         console.log(err);
          const errorMsg = err?.response?.data?.msg;
          if (errorMsg) {
             toast.error(errorMsg);
