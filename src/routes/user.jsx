@@ -1,7 +1,7 @@
 import LinkList from "../components/LinkList";
 import ProfileData from "../components/ProfileData";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import user from "../api/user";
 
@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { saveProfile, saveLinks } from "../redux/userSlice.js";
 
 export default function UserPage() {
-   const location = useLocation();
+   const param = useParams();
    const linkList = useSelector((state) => state.user.links);
    const dispatch = useDispatch();
    const [userData, setUserData] = useState("");
@@ -17,7 +17,7 @@ export default function UserPage() {
    const [errorMsg, setErrorMsg] = useState(false);
 
    useEffect(() => {
-      const userEmail = `${location.pathname}@gmail.com`;
+      const userEmail = `${param?.id}@gmail.com`;
       const email = userEmail.replace("/", "");
       getUser(email);
    }, []);

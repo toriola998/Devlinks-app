@@ -4,7 +4,7 @@ import ProfileData from "../components/ProfileData";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Preview() {
    const email = useSelector((state) => state.user.email);
@@ -16,7 +16,7 @@ export default function Preview() {
          window.location.protocol +
          "//" +
          window.location.host +
-         "/" +
+         "/user/" +
          username;
 
       navigator.clipboard
@@ -31,7 +31,7 @@ export default function Preview() {
 
    return (
       <>
-       <ToastContainer theme="colored" />
+         <ToastContainer theme="colored" />
          <div className="bg-[transparent] md:bg-purple h-0 md:h-[357px] rounded-br-[32px] rounded-bl-[32px] md:p-6">
             <nav className="flex-item justify-between p-4 md:bg-white rounded-xl">
                <Link className="outline-btn w-auto" to="/customize-links">

@@ -8,6 +8,7 @@ import {
    ProfileDetails,
    Preview,
    UserPage,
+   ErrorPage,
 } from "./routes/index";
 import "./api";
 import store from "./redux/store";
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
    {
       path: "/",
       element: <Login />,
+      errorElement: <ErrorPage />,
    },
    {
       path: "/signup",
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
       element: <Preview />,
    },
    {
-      path: "/:id",
+      path: "user/:id",
       element: <UserPage />,
    },
 ]);
