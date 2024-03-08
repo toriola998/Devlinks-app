@@ -26,7 +26,13 @@ function PhonePreview() {
                   stroke="#737373"
                />
 
-               <foreignObject x="10" y="20" width="280" height="550">
+               <foreignObject
+                  x="10"
+                  y="20"
+                  width="280"
+                  height="550"
+                  className="phone-scroll scroll-smooth max-h-full overflow-y-scroll"
+               >
                   <div
                      xmlns="http://www.w3.org/1999/xhtml"
                      className="flex justify-center mt-10"
@@ -42,7 +48,7 @@ function PhonePreview() {
                            </>
                         )}
 
-                        <div className="flex flex-col gap-y-5 py-[56px]">
+                        <div className="flex flex-col gap-y-5 py-[56px] max-h-full overflow-y-auto">
                            {/* {divData.map((item) => (
                               <div
                                  key={item.id}
