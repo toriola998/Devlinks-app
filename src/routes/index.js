@@ -5,3 +5,4 @@ export { default as Signup } from "./signup";
 export { default as Preview } from "./preview";
 export { default as ProfileDetails } from "./profile-details";
 export { default as UserPage } from "./user";
+export {default as ProtectedRoutes} from "./ProtectedRoutes"

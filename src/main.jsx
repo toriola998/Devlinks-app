@@ -9,6 +9,7 @@ import {
    Preview,
    UserPage,
    ErrorPage,
+   ProtectedRoutes,
 } from "./routes/index";
 import "./api";
 import store from "./redux/store";
@@ -28,15 +29,27 @@ const router = createBrowserRouter([
    },
    {
       path: "/customize-links",
-      element: <CustomizeLinks />,
+      element: (
+         <ProtectedRoutes>
+            <CustomizeLinks />
+         </ProtectedRoutes>
+      ),
    },
    {
       path: "/profile-details",
-      element: <ProfileDetails />,
+      element: (
+         <ProtectedRoutes>
+            <ProfileDetails />
+         </ProtectedRoutes>
+      ),
    },
    {
       path: "/preview",
-      element: <Preview />,
+      element: (
+         <ProtectedRoutes>
+            <Preview />
+         </ProtectedRoutes>
+      ),
    },
    {
       path: "user/:id",
