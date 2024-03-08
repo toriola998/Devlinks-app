@@ -16,6 +16,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schemas from "../schemas";
 
 export default function CustomizeLinks() {
+   const [loading, setLoading] = useState(false);
+   const dispatch = useDispatch();
+   const email = useSelector((state) => state.user.email);
+   const links = useSelector((state) => state.user.links);
+
    const {
       register,
       handleSubmit,
@@ -26,6 +31,9 @@ export default function CustomizeLinks() {
    } = useForm({
       resolver: yupResolver(schemas.linkSchema),
       // defaultValues: initialValues,
+      defaultValues: {
+         items: links, // Assuming `links` contains the initial values
+      },
    });
 
    const { fields, append, remove } = useFieldArray({
@@ -39,12 +47,7 @@ export default function CustomizeLinks() {
          icon: "github.svg",
       }))
    );
-   const [loading, setLoading] = useState(false);
-   // const [userId, setUserId] = useState(
-   //    JSON.parse(localStorage.getItem("email"))
-   // );
-   const dispatch = useDispatch();
-   const email = useSelector((state) => state.user.email);
+   
 
    async function onSubmit(data) {
       const payload = {
