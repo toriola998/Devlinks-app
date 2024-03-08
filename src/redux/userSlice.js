@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 let persistedState = JSON.parse(localStorage.getItem('reduxState'));
-const { email, links, userProfile } = persistedState.user
+const { email, links, userProfile } = persistedState?.user || {}
 
 const initialState = {
   links: links || [],

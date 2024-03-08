@@ -20,10 +20,10 @@ function ProfileData({ textStyleClass, profileData }) {
             {firstName} {lastName}
          </p>
          <a
-            href={`mailto: ${profileData?.email}`}
+            href={`mailto: ${userData?.profileEmail}`}
             className="text-grey-1 text-center block"
          >
-            {profileData?.email}
+            {userData?.profileEmail}
          </a>
       </>
    );

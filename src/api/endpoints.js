@@ -6,5 +6,6 @@ export default {
 
     USER: {
         UPDATE_USER: 'api/v1/user/updateUser',
+        GET_USER: 'api/v1/getUser',
     },
 }

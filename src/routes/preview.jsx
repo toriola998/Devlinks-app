@@ -43,7 +43,7 @@ export default function Preview() {
             </nav>
          </div>
 
-         <main className="preview-tree mb-40">
+         <main className="preview-tree mt-28 md:-mt-32 mb-40">
             <ProfileData textStyleClass="font-bold text-[32px]" />
 
             <div className="flex-item justify-center py-[56px]">

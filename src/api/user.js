@@ -8,4 +8,10 @@ export default {
         let url = `${endpoint.USER.UPDATE_USER}/${userEmail}`
         return axios({ method, url, token, data });
     },
+
+    getUser: id => {
+        let method = "get";
+        let url = `${endpoint.USER.GET_USER}/${id}`
+        return axios({ method, url });
+    },
 }

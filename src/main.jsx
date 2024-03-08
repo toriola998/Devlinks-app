@@ -7,7 +7,7 @@ import {
    CustomizeLinks,
    ProfileDetails,
    Preview,
-   // UserPage,
+   UserPage,
 } from "./routes/index";
 import "./api";
 import store from "./redux/store";
@@ -36,10 +36,10 @@ const router = createBrowserRouter([
       path: "/preview",
       element: <Preview />,
    },
-   // {
-   //    path: "/:id",
-   //    element: <UserPage />,
-   // },
+   {
+      path: "/:id",
+      element: <UserPage />,
+   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
