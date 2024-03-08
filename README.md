@@ -1,8 +1,65 @@
-# React + Vite
+# Dev links web-app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## The features
 
-Currently, two official plugins are available:
+Users are be able to:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View the optimal layout for the app depending on their device's screen size.
+- See hover states for all interactive elements on the page.
+- Create account & Log in.
+- Fill in all fields for creating a user profile. 
+- Receive form validations if fields are missed or incorrect during checkout.
+- See all profile data on page re-load.
+- Copy & share profile links.
+
+## Screenshot
+
+![](/screenshot.png)
+
+## Links
+
+- Live Site URL: []()
+
+## Backend (API) Link
+
+- URL: [https://github.com/toriola998/Devlinks-API](https://github.com/toriola998/Devlinks-API)
+
+## Built with
+
+- ReactJS
+- Tailwind CSS - CSS library
+- Redux toolkit - State (store) library
+- SCSS
+- React-hook-form/yup - Form handling/validation
+- Mobile-first workflow
+
+## Setup
+
+Make sure to install the dependencies:
+
+```bash
+# npm
+npm install
+```
+
+## Development Server
+
+Start the development server on `http://127.0.0.1:5173`
+
+```bash
+npm run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+npm run build
+```
+
+Locally preview production build:
+
+```bash
+npm run preview
+```

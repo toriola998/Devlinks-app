@@ -27,7 +27,7 @@ export default function ProfileDetails() {
 
    const [selectedImage, setSelectedImage] = useState(userData?.photo);
    const [loading, setLoading] = useState(false);
-   const [imageFile, setImageFile] = useState(null);
+   const [imageFile, setImageFile] = useState(userData?.photo);
 
    const handleImageChange = (e) => {
       const file = e.target.files[0];
@@ -58,7 +58,6 @@ export default function ProfileDetails() {
       try {
          setLoading(true);
          await user.updateUser(payload, email);
-
          dispatch(saveProfile({ ...payload }));
          toast.success("Profile details successfully saved!");
       } catch (err) {
