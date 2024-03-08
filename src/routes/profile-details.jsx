@@ -23,7 +23,6 @@ export default function ProfileDetails() {
 
    const dispatch = useDispatch();
    const email = useSelector((state) => state.user.email);
-   console.log(email);
    const userData = useSelector((state) => state.user.userProfile);
 
    const [selectedImage, setSelectedImage] = useState(userData?.photo);
@@ -32,14 +31,12 @@ export default function ProfileDetails() {
 
    const handleImageChange = (e) => {
       const file = e.target.files[0];
-      console.log(file);
       if (file) {
          setSelectedImage(URL.createObjectURL(file));
          const fileReader = new FileReader();
 
          fileReader.onload = function (fileLoadedEvent) {
             const base64 = fileLoadedEvent.target.result; // <--- data: base64
-            console.log(base64, "base 64");
             setImageFile(base64);
          };
 
@@ -51,8 +48,6 @@ export default function ProfileDetails() {
    };
 
    async function onSubmit(data) {
-      console.log(data, "all data");
-      console.log(imageFile);
       const payload = {
          photo: imageFile,
          firstName: data.firstName,
@@ -62,12 +57,11 @@ export default function ProfileDetails() {
       };
       try {
          setLoading(true);
-         const response = await user.updateUser(payload, email);
-         console.log(response);
+         await user.updateUser(payload, email);
+
          dispatch(saveProfile({ ...payload }));
          toast.success("Profile details successfully saved!");
       } catch (err) {
-         console.log(err);
          const errorMsg = err?.response?.data?.msg;
          if (errorMsg) {
             toast.error(errorMsg);

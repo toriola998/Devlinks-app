@@ -19,8 +19,6 @@ export default function UserPage() {
    useEffect(() => {
       const userEmail = `${location.pathname}@gmail.com`;
       const email = userEmail.replace("/", "");
-      console.log(email);
-
       getUser(email);
    }, []);
 
@@ -42,13 +40,11 @@ export default function UserPage() {
             })
          );
          dispatch(saveLinks(links));
-         console.log(response);
       } catch (err) {
          const errorMsg = err?.response?.data?.msg;
          if (errorMsg) {
             setErrorMsg(errorMsg);
          } else setErrorMsg("Something seems wrong, try again later!");
-         console.log(err);
       } finally {
          setLoading(false);
       }
@@ -78,7 +74,7 @@ export default function UserPage() {
                <div className="bg-[transparent] md:bg-purple h-0 md:h-[357px] rounded-br-[32px] rounded-bl-[32px] md:p-6" />
                <main className="preview-tree mt-10 md:-mt-48 mb-40">
                   <ProfileData textStyleClass="font-bold text-[32px]" />
-                  
+
                   <div className="flex-item justify-center py-[56px]">
                      <div className="flex flex-col gap-y-5">
                         <LinkList linkList={linkList} />

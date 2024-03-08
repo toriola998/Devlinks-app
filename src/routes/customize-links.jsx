@@ -30,9 +30,8 @@ export default function CustomizeLinks() {
       setValue,
    } = useForm({
       resolver: yupResolver(schemas.linkSchema),
-      // defaultValues: initialValues,
       defaultValues: {
-         items: links, // Assuming `links` contains the initial values
+         items: links,
       },
    });
 
@@ -58,12 +57,10 @@ export default function CustomizeLinks() {
       };
       try {
          setLoading(true);
-         const response = await user.updateUser(payload, email);
-         console.log(response);
+         await user.updateUser(payload, email);
          dispatch(saveLinks(data?.items));
          toast.success("Links successfully saved!");
       } catch (err) {
-         console.log(err);
          const errorMsg = err?.response?.data?.msg;
          if (errorMsg) {
             toast.error(errorMsg);

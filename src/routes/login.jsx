@@ -41,11 +41,8 @@ export default function Login() {
          if (token) {
             navigate("/customize-links", { replace: true });
          }
-
          const { firstName, lastName, photo, profileEmail, colorTheme, links } = data;
          dispatch(saveEmail(payload?.email));
-         // localStorage.setItem("email", JSON.stringify(payload?.email));
-         console.log(data, 'userData')
          dispatch(
             saveProfile({
                firstName,
