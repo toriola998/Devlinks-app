@@ -42,12 +42,15 @@ export default function CustomizeLinks() {
    });
 
    const [selectedPlatform, setSelectedPlatform] = useState(
-      fields.map(() => ({
-         name: "Github",
-         icon: "github.svg",
+      // fields.map(() => ({
+      //    name: "Github",
+      //    icon: "github.svg",
+      // }))
+      links.map((link) => ({
+         name: link.platform.name,
+         icon: link.platform.icon,
       }))
    );
-   
 
    async function onSubmit(data) {
       const payload = {
