@@ -74,27 +74,32 @@
     100% { transform: rotate(360deg); }
 }
 
+.select__menu-list::-webkit-scrollbar,
 .modal-scroll::-webkit-scrollbar {
     width: 5px;
   }
   
   /* Track */
+  .select__menu-list::-webkit-scrollbar-track,
   .modal-scroll::-webkit-scrollbar-track {
     background: #f1f1f1; 
   }
   
   /* Handle */
+  .select__menu-list::-webkit-scrollbar-thumb,
   .modal-scroll::-webkit-scrollbar-thumb {
     @apply bg-purple;
     border-radius: 5px;
   }
   
   /* Handle on hover */
+  .select__menu-list::-webkit-scrollbar-thumb:hover,
   .modal-scroll::-webkit-scrollbar-thumb:hover {
     background: transparent; 
   }
   
   /* Overscroll track */
+  .select__menu-list::-webkit-scrollbar-corner,
   .modal-scroll::-webkit-scrollbar-corner {
     background: #f1f1f1;
   }

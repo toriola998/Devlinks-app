@@ -4,6 +4,7 @@ import SaveButton from "../components/SaveButton";
 import InputField from "../components/input/InputField";
 import SelectDropdown from "../components/input/SelectDropdown";
 import user from "../api/user.js";
+import platforms from "../data/platformList.js";
 
 import { useDispatch, useSelector } from "react-redux";
 import { saveLinks } from "../redux/userSlice.js";
@@ -14,6 +15,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import schemas from "../schemas";
+import InputSelect from "../components/input/InputSelect.jsx";
 
 export default function CustomizeLinks() {
    const [loading, setLoading] = useState(false);
@@ -47,7 +49,6 @@ export default function CustomizeLinks() {
          icon: "github.svg",
       }))
    );
-   
 
    async function onSubmit(data) {
       const payload = {
@@ -116,6 +117,11 @@ export default function CustomizeLinks() {
                                     Remove
                                  </button>
                               </div>
+                              <InputSelect
+                                 label="Platform"
+                                 options={platforms}
+                              />
+
                               <SelectDropdown
                                  selectedPlatform={selectedPlatform[index]} // Pass the specific selectedPlatform
                                  setSelectedPlatform={(platform) => {
