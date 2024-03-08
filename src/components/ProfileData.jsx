@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-function ProfileData({ textStyleClass, profileData }) {
+function ProfileData({ textStyleClass }) {
    const userData = useSelector((state) => state.user.userProfile);
 
    let firstName = userData?.firstName;
@@ -12,7 +12,7 @@ function ProfileData({ textStyleClass, profileData }) {
          {!userData?.photo ? (
             <div className="initials photo">{initials}</div>
          ) : (
-            <img src={profileData?.photo} alt="" className="photo" />
+            <img src={userData?.photo} alt="" className="photo" />
          )}
          <p
             className={`${textStyleClass} font-bold text-[32px] text-dark-grey mt-6 mb-2 text-center capitalize`}

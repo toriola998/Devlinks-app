@@ -10,29 +10,23 @@ import { toast } from "react-toastify";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function ProfileDetails() {
-   // Get the form data from the Redux store
    const {
       register,
       handleSubmit,
       formState: { errors },
    } = useForm({
       resolver: yupResolver(schemas.profileDetailsSchema),
-      // defaultValues: formDataFromRedux || {
-      //    firstName: "",
-      //    lastName: "",
-      //    email: "",
-      //    photo: ""
-      // },
    });
 
    const dispatch = useDispatch();
    const email = useSelector((state) => state.user.email);
+   console.log(email);
    const userData = useSelector((state) => state.user.userProfile);
 
-   const [selectedImage, setSelectedImage] = useState("");
+   const [selectedImage, setSelectedImage] = useState(userData?.photo);
    const [loading, setLoading] = useState(false);
    const [imageFile, setImageFile] = useState(null);
 
@@ -41,7 +35,15 @@ export default function ProfileDetails() {
       console.log(file);
       if (file) {
          setSelectedImage(URL.createObjectURL(file));
-         setImageFile(file);
+         const fileReader = new FileReader();
+
+         fileReader.onload = function (fileLoadedEvent) {
+            const base64 = fileLoadedEvent.target.result; // <--- data: base64
+            console.log(base64, "base 64");
+            setImageFile(base64);
+         };
+
+         fileReader.readAsDataURL(file);
       } else {
          setSelectedImage(null);
          return null;
@@ -49,10 +51,10 @@ export default function ProfileDetails() {
    };
 
    async function onSubmit(data) {
-      console.log(data, 'all data');
-      console.log(selectedImage);
+      console.log(data, "all data");
+      console.log(imageFile);
       const payload = {
-         // photo: "",
+         photo: imageFile,
          firstName: data.firstName,
          lastName: data.lastName,
          profileEmail: data.email,
