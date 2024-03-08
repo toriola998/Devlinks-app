@@ -8,17 +8,17 @@ Users are be able to:
 - See hover states for all interactive elements on the page.
 - Create account & Log in.
 - Fill in all fields for creating a user profile. 
-- Receive form validations if fields are missed or incorrect during checkout.
+- Receive form validations if fields are missed or incorrect.
 - See all profile data on page re-load.
 - Copy & share profile links.
 
 ## Screenshot
 
-![](/screenshot.png)
+![](/public/screenshot.png)
 
 ## Links
 
-- Live Site URL: []()
+- Live Site URL: [https://dev-links-sharing.netlify.app/](https://dev-links-sharing.netlify.app/)
 
 ## Backend (API) Link
 
