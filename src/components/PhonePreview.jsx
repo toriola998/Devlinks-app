@@ -35,7 +35,7 @@ function PhonePreview() {
                >
                   <div
                      xmlns="http://www.w3.org/1999/xhtml"
-                     className="flex justify-center mt-10"
+                     className="flex justify-center mt-7"
                   >
                      <div>
                         {userData ? (
