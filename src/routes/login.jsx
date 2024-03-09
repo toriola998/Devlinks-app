@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schemas from "../schemas";
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 export default function Login() {
@@ -21,6 +21,10 @@ export default function Login() {
    } = useForm({
       resolver: yupResolver(schemas.loginSchema),
    });
+
+   useEffect(() => {
+      localStorage.clear();
+   }, []);
 
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
@@ -41,7 +45,8 @@ export default function Login() {
          if (token) {
             navigate("/customize-links", { replace: true });
          }
-         const { firstName, lastName, photo, profileEmail, colorTheme, links } = data;
+         const { firstName, lastName, photo, profileEmail, colorTheme, links } =
+            data;
          dispatch(saveEmail(payload?.email));
          dispatch(
             saveProfile({
@@ -52,7 +57,7 @@ export default function Login() {
                colorTheme,
             })
          );
-         dispatch(saveLinks(links))
+         dispatch(saveLinks(links));
       } catch (err) {
          const errorMsg = err?.response?.data?.msg;
          if (errorMsg) {

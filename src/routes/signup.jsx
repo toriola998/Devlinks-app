@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schemas from "../schemas";
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 export default function Signup() {
@@ -18,6 +18,10 @@ export default function Signup() {
    } = useForm({
       resolver: yupResolver(schemas.signupSchema),
    });
+
+   useEffect(() => {
+      localStorage.clear();
+   }, []);
 
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
