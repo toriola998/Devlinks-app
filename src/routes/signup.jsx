@@ -6,6 +6,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schemas from "../schemas";
 
+import { useDispatch } from "react-redux";
+import { saveEmail } from "../redux/userSlice.js";
+
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
@@ -21,10 +24,11 @@ export default function Signup() {
 
    useEffect(() => {
       localStorage.clear();
-   }, []);
+  }, []);
 
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
+   const dispatch = useDispatch();
 
    async function onSubmit(formData) {
       let payload = {
@@ -36,9 +40,11 @@ export default function Signup() {
          const response = await auth.register(payload);
          const token = response?.data?.token;
          localStorage.setItem("token", token);
+         dispatch(saveEmail(payload?.email));
          if (token) {
             navigate("/customize-links", { replace: true });
          }
+         
       } catch (err) {
          const errorMsg = err?.response?.data?.msg;
          if (errorMsg) {

@@ -57,6 +57,11 @@ const router = createBrowserRouter([
    },
 ]);
 
+// Check if local storage is empty before clearing it on application initialization
+if (Object.keys(localStorage).length === 0) {
+   localStorage.clear();
+ }
+
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
       <Provider store={store}>

@@ -24,7 +24,7 @@ export default function Login() {
 
    useEffect(() => {
       localStorage.clear();
-   }, []);
+  }, []);
 
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
