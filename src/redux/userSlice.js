@@ -22,9 +22,10 @@ export const userSlice = createSlice({
     saveProfile: (state, action) => {
       state.userProfile = (action.payload);
     },
+    resetUser: () => initialState 
   },
 })
 
-export const { saveLinks, saveEmail, saveProfile } = userSlice.actions
+export const { saveLinks, saveEmail, saveProfile, resetUser } = userSlice.actions
 
 export default userSlice.reducer

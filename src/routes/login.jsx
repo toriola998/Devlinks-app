@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schemas from "../schemas";
 
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function Login() {
@@ -22,9 +22,10 @@ export default function Login() {
       resolver: yupResolver(schemas.loginSchema),
    });
 
-   useEffect(() => {
-      sessionStorage.clear();
-  }, []);
+//    useEffect(() => {
+//       dispatch(resetUser());
+//       sessionStorage.clear();
+//   }, []);
 
    const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
