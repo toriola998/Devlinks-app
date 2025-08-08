@@ -23,7 +23,7 @@ export default function Signup() {
    });
 
    useEffect(() => {
-      localStorage.clear();
+      sessionStorage.clear();
   }, []);
 
    const [loading, setLoading] = useState(false);
@@ -39,7 +39,7 @@ export default function Signup() {
          setLoading(true);
          const response = await auth.register(payload);
          const token = response?.data?.token;
-         localStorage.setItem("token", token);
+         sessionStorage.setItem("token", token);
          dispatch(saveEmail(payload?.email));
          if (token) {
             navigate("/customize-links", { replace: true });

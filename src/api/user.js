@@ -1,6 +1,6 @@
 import endpoint from './endpoints';
 import axios from "axios";
-let token = localStorage.getItem('token')
+let token = sessionStorage.getItem('token')
 
 export default {
     updateUser: (data, userEmail) => {

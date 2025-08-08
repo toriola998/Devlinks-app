@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const ProtectedRoutes = ({ children }) => {
-   const isAuthenticated = localStorage.getItem("token");
+   const isAuthenticated = sessionStorage.getItem("token");
    const navigate = useNavigate();
 
    useEffect(() => {

@@ -23,7 +23,7 @@ export default function Login() {
    });
 
    useEffect(() => {
-      localStorage.clear();
+      sessionStorage.clear();
   }, []);
 
    const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ export default function Login() {
          const response = await auth.login(payload);
          const data = response?.data;
          const token = data?.token;
-         localStorage.setItem("token", token);
+         sessionStorage.setItem("token", token);
          if (token) {
             navigate("/customize-links", { replace: true });
          }
